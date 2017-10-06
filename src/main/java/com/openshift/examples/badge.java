@@ -27,7 +27,7 @@ public class badge {
 		} else {
 			assist.logStatus(1); //no sale running
 		}
-		return "success!";
+		return "<service>" + "success!" + "</service>";
 	}
   
 }
