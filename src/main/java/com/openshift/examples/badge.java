@@ -48,7 +48,7 @@ public class badge {
 		} else {
 			logStatus(1); //no sale running
 		}
-		return "success!"
+		return "success!";
 	}
  
 	public static boolean checkDB() {
