@@ -4,6 +4,24 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
  
 @Path("/checkBadgeSale")
 public class badge {
@@ -33,7 +51,7 @@ public class badge {
 		return "success!"
 	}
  
-public static boolean checkDB() {
+	public static boolean checkDB() {
 		try {
 			Connection conn = DriverManager.getConnection(myUrl, "user5107", "4chanLOL");
 			Statement st = conn.createStatement();
@@ -107,10 +125,6 @@ public static boolean checkDB() {
             	return true;
             }
 
-//            Element links = doc.select("div:contains(Half-Price Sale)").first();
-//            if(links.text() != null) {
-//            	return true;
-//            }
             
         } catch (IOException e) {
             e.printStackTrace();
