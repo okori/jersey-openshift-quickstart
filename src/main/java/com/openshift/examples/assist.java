@@ -20,15 +20,15 @@ import twitter4j.auth.AccessToken;
 
   public class assist {
   
-    static String consumerKeyStr       = "pHE3zK2ikhaQ39arE3kz5KVJ0";
-	  static String consumerSecretStr    = "CHy0pxp5NPY7TVvClfPUbIaFahffNoEGODmjy6DuLLdP0WXoaQ";
-	  static String accessTokenStr       = "914619321590079489-OGxE9narl0pGVw5RUAh1hcccaPxG5RF";
-	  static String accessTokenSecretStr = "tXQ7zxGACNTaj1fsVLeIy94ZGtu6uBvrRk5ndBkwCGU9J";
+      static String consumerKeyStr       = "pHE3zK2ikhaQ39arE3kz5KVJ0";
+      static String consumerSecretStr    = "CHy0pxp5NPY7TVvClfPUbIaFahffNoEGODmjy6DuLLdP0WXoaQ";
+      static String accessTokenStr       = "914619321590079489-OGxE9narl0pGVw5RUAh1hcccaPxG5RF";
+      static String accessTokenSecretStr = "tXQ7zxGACNTaj1fsVLeIy94ZGtu6uBvrRk5ndBkwCGU9J";
 	
-    static String myUrl = "jdbc:mysql://db4free.net:3307/bernard?useSSL=false";
+      static String myUrl = "jdbc:mysql://db4free.net:3307/bernard?useSSL=false";
     
       public static boolean checkDB() {
-		    try {
+		 try {
 			    Connection conn = DriverManager.getConnection(myUrl, "user5107", "4chanLOL");
 			    Statement st = conn.createStatement();
 			
@@ -52,20 +52,20 @@ import twitter4j.auth.AccessToken;
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 		LocalDate localDate = LocalDate.now();
 				
-	    try {
-	      Connection conn = DriverManager.getConnection(myUrl, "user5107", "4chanLOL");
+	    	try {
+	      		Connection conn = DriverManager.getConnection(myUrl, "user5107", "4chanLOL");
 	      
-	      Statement st = conn.createStatement();
+	      		Statement st = conn.createStatement();
 
-	      st.executeUpdate("INSERT INTO `badge_sale_queries`(sale_status,date) VALUE"
-	      		+ " ('"+bool+"','"+dtf.format(localDate)+"')");
+	      		st.executeUpdate("INSERT INTO `badge_sale_queries`(sale_status,date) VALUE"
+	      			+ " ('"+bool+"','"+dtf.format(localDate)+"')");
 
-	      conn.close();
+	      		conn.close();
 	      
-	    } catch (Exception e) {
-	      System.err.println("Got an exception!");
-	      System.err.println(e.getMessage());
-	    }
+	    	} catch (Exception e) {
+	      		System.err.println("Got an exception!");
+	      		System.err.println(e.getMessage());
+	   	 }
 	
 	}
   
@@ -84,7 +84,7 @@ import twitter4j.auth.AccessToken;
 
 		} catch (TwitterException e) {
 		    System.err.println("Got an exception!");
-			e.printStackTrace();
+		    e.printStackTrace();
 		}
 		
 	}
