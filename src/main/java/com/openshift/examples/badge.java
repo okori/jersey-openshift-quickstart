@@ -106,9 +106,9 @@ public class badge {
 
 			twitter.updateStatus("a badge sale has started!");
 
-		} catch (TwitterException te) {
+		} catch (TwitterException e) {
 		    System.err.println("Got an exception!");
-			te.printStackTrace();
+			e.printStackTrace();
 		}
 		
 	}
@@ -116,20 +116,19 @@ public class badge {
 	//need to check if a badge sale was running the last time it was checked
 	//if a sale was running last time DON'T send notif -- if it wasn't DO send
 	public static boolean checkSale() {
-        Document doc;
-        try {
-
-            doc = Jsoup.connect("http://www.imvu.com/catalog/newsletter/badges.php").get();
+        	Document doc;
+        	try {
+            		doc = Jsoup.connect("http://www.imvu.com/catalog/newsletter/badges.php").get();
             
-            if(doc.select("div:contains(Half-Price Sale)").first() != null) {
-            	return true;
-            }
+            		if(doc.select("div:contains(Half-Price Sale)").first() != null) {
+            			return true;
+            		}
 
             
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
+        	} catch (IOException e) {
+            		e.printStackTrace();
+        	}
+        	return false;
 	}
 
 }
