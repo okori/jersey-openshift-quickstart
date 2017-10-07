@@ -7,36 +7,23 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
  
-@Path("/checkBadgeSale")
+@Path("/report")
 public class badge {
 	
-	static String consumerKeyStr       = "pHE3zK2ikhaQ39arE3kz5KVJ0";
-        static String consumerSecretStr    = "CHy0pxp5NPY7TVvClfPUbIaFahffNoEGODmjy6DuLLdP0WXoaQ";
-        static String accessTokenStr       = "914619321590079489-OGxE9narl0pGVw5RUAh1hcccaPxG5RF";
-        static String accessTokenSecretStr = "tXQ7zxGACNTaj1fsVLeIy94ZGtu6uBvrRk5ndBkwCGU9J";
-	
-	@GET
-	@Produces("application/xml")
-	public String report() {
-		
-		try {
-			Twitter twitter = new TwitterFactory().getInstance();
-
-			twitter.setOAuthConsumer(consumerKeyStr, consumerSecretStr);
-			AccessToken accessToken = new AccessToken(accessTokenStr,
-					accessTokenSecretStr);
-
-			twitter.setOAuthAccessToken(accessToken);
-
-			twitter.updateStatus("a badge sale has started!");
-
-		} catch (TwitterException e) {
-		    System.err.println("Got an exception!");
-		    e.printStackTrace();
-		}
+	public void report() {
 		
 		boolean saleStatus = assist.checkSale();
-		return "<isRunning>" + saleStatus + "</isRunning>";
+		
+		if(saleStatus && assist.checkDB()) {
+			assist.sendAlert();
+		}
+		
+		if(saleStatus) {
+			assist.logStatus(0);
+		} else {
+			assist.logStatus(1);
+		}
+		
 	}
   
 }
