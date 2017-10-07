@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 @Path("/report")
 public class badge {
 	
+	@GET
 	public void report() {
 		
 		boolean saleStatus = assist.checkSale();
